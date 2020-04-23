@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Events In JavaScript</title>
+</head>
+<body>
+    <button id="cevent" type="button">
+        Custom Event
+    </button>
+    <script>
+        var someEvent = new CustomEvent('mycustomevent',{
+            detail:{
+                coustEntry:'SomeValue'
+            },
+            bubbles:false,
+            cancelable:true
+        })
+        const btn = document.getElementById('cevent');
+        btn.addEventListener('mycustomevent',function(e){
+            console.log(e.detail)
+        })
+        btn.addEventListener('click',function(){
+            btn.dispatchEvent(someEvent)
+        })
+    </script>
+</body>
+</html>
